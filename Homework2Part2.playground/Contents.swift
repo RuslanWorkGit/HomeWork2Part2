@@ -51,8 +51,8 @@ import Foundation
 
 
     Поточний результат:
-     - ЕКРАН 2 виводить інформацю тільки для міста Львів
-     - ЕКРАН 2 виводить дублювання інформації для міста Львів у кількості білше, ніж кількість заданих міст разом
+     - ЕКРАН 2 виводить інформацю тільки для міста Одеса
+     - ЕКРАН 2 виводить дублювання інформації для міста Одеса у кількості білше, ніж кількість заданих міст разом
      - ЕКРАН 2 виводить інформацю про погоду тільки у значенні Кельвін,
        а має виводити у Цельсій
 
@@ -147,7 +147,7 @@ let cityIndex = Int(arc4random() % UInt32(weatherInCities.count - 1))
 
 // виводимо ПОВНУ інформацію для кожного міста, що є у масиві weatherInCities
 print("---------- ЕКРАН 1 ----------")
-for index in 0...6 {
+for index in 0..<cityNames.count {
     let num = index
     let weatherInfo = weatherInCities[index]
     let city = weatherInfo.cityName
@@ -172,12 +172,12 @@ print("\n\n")
 // виводимо інформацію про температуру тільки у Цельсій
 // для кожного міста, що є у масиві weatherInCities
 print("---------- ЕКРАН 2 ----------")
-for index in 1 ..< 10 {
+for index in 0..<cityNames.count{
     let _ = index
-    let weatherInfo = weatherInCities[2]
-    let city = weatherInfo.0
-    let kelvin = weatherInfo.1
-    print("\n\(city):\nt: \(String(format: "%.1f", kelvin)) C")
+    let weatherInfo = weatherInCities[index]
+    let city = weatherInfo.cityName
+    let celsius = weatherInfo.tempKel - 273.5
+    print("\n\(city):\nt: \(String(format: "%.1f", celsius)) C")
 }
 print("\n-----------------------------")
 print("\n\n")
